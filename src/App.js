@@ -29,6 +29,8 @@ class NameForm extends React.Component {
       name: this.state.name, submitter: this.state.submitter
     });
 
+    this.setState({name: '', submitter:''});
+
   }
 
   render() {
