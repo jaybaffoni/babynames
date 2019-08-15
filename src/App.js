@@ -13,7 +13,6 @@ class NameForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({value: event.target.value});
   }
 
@@ -33,7 +32,7 @@ class NameForm extends React.Component {
           Name:
           <input style={{marginLeft:'10px'}} type="text" value={this.state.value} onChange={this.handleChange} onSubmit={this.handleSubmit} />
         </label>
-        <input type="submit" value="Submit" />
+        <input value="Submit" />
       </form>
     );
   }
