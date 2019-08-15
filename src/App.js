@@ -6,35 +6,54 @@ import './App.css';
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {name: '', submitter:''};
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleSubmitterChange = this.handleSubmitterChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleNameChange(event) {
+    this.setState({name:event.target.value});
+  }
+
+  handleSubmitterChange(event) {
+    this.setState({submitter:event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.value);
-    let data = this.state.value;
+    console.log(this.state.name);
+    console.log(this.state.submitter);
     axios.post('https://baffoni-baby.herokuapp.com/entries', {
-      // name: event.target.value
-      name: data
-    })
+      name: this.state.name, submitter: this.state.submitter
+    });
+
   }
 
   render() {
     return (
-      <form style={{marginTop:'35px'}} onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input style={{marginLeft:'10px'}} type="text" value={this.state.value} onChange={this.handleChange} onSubmit={this.handleSubmit} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+      <form>
+              <label>Suggested Name:</label>
+              <br></br>
+              <input type="text" 
+                     name="name" 
+                     value={this.state.name} 
+                     onChange={this.handleNameChange} 
+              />
+              <br></br>
+              <label>Submitted By:</label>
+              <br></br>
+              <input type="text" 
+                     name="submitter" 
+                     value={this.state.submitter} 
+                     onChange={this.handleSubmitterChange} 
+              />
+
+          </form> 
+      <button onClick={this.handleSubmit}> Submit </button>
+      </div>
     );
   }
 }
