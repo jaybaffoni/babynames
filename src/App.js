@@ -106,15 +106,18 @@ class NameForm extends React.Component {
             </form> 
         <button style={{marginTop: '20px'}}onClick={this.handleSubmit}> Submit </button>
         <br></br><br></br>
-        <label>Approved Names:</label>
-        <div className="row">
-            {this.approvedRows()}
+        <div style={{padding:'15px'}}>
+          <label>Approved Names:</label>
+          <div className="row">
+              {this.approvedRows()}
+          </div>
+          <br></br>
+          <label>Rejected Names:</label>
+          <div className="row">
+              {this.rejectedRows()}
+          </div>
         </div>
-        <br></br>
-        <label>Rejected Names:</label>
-        <div className="row">
-            {this.rejectedRows()}
-        </div>
+        
       </div>
     );
   }

@@ -10,7 +10,7 @@ class NameRow extends Component {
     render() {
         var obj = this.state.obj;
         return (
-            <div className="login-card col-md-4" style={{marginTop:20}}>
+            <div className="login-card col-lg-12" style={{marginTop:20}}>
                 <h4 style={{color:'black'}}>{obj.name}</h4>
                 <h4 style={{color:'grey'}}>- {obj.submitter}</h4>
             </div>
