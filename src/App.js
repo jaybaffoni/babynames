@@ -17,6 +17,7 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     console.log(this.state.value);
     let data = this.state.value;
     axios.post('https://baffoni-baby.herokuapp.com/entries', {
@@ -32,7 +33,7 @@ class NameForm extends React.Component {
           Name:
           <input style={{marginLeft:'10px'}} type="text" value={this.state.value} onChange={this.handleChange} onSubmit={this.handleSubmit} />
         </label>
-        <input value="Submit" />
+        <input type="submit" value="Submit" />
       </form>
     );
   }
