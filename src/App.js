@@ -1,24 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
+import logo from './girl.png';
 import './App.css';
+
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    console.log(event.target.value);
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    console.log(this.state.value);
+    let data = this.state.value;
+    axios.post('https://baffoni-baby.herokuapp.com/entries', {
+      // name: event.target.value
+      name: data
+    })
+  }
+
+  render() {
+    return (
+      <form style={{marginTop:'35px'}} onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input style={{marginLeft:'10px'}} type="text" value={this.state.value} onChange={this.handleChange} onSubmit={this.handleSubmit} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <NameForm />
       </header>
+      
     </div>
   );
 }
