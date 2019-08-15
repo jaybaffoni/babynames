@@ -11,8 +11,8 @@ class NameRow extends Component {
         var obj = this.state.obj;
         return (
             <div className="login-card col-lg-12" style={{marginTop:20}}>
-                <h4 style={{color:'black'}}>{obj.name}</h4>
-                <h4 style={{color:'grey'}}>- {obj.submitter}</h4>
+                <h4 style={{color:'black', overflowWrap:'break-word'}}>{obj.name}</h4>
+                <h4 style={{color:'grey', overflowWrap:'break-word'}}>- {obj.submitter}</h4>
             </div>
     );
   }
